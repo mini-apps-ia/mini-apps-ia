@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { chat } from "@/lib/ai";
 
 export const runtime = "nodejs";
+export const maxDuration = 120;
 
 const BASE = `Você é um criador de conteúdo brasileiro e especialista em marketing digital, conhecido por textos curtos e potentes que convertem.
 

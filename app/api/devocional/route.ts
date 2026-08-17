@@ -4,6 +4,7 @@ import { chat, gerarImagem } from "@/lib/ai";
 import { getPerfil } from "@/lib/perfil";
 
 export const runtime = "nodejs";
+export const maxDuration = 120;
 
 function SYSTEM(perfilInstrucoes: string) {
   return `Você é um escritor de devocionais evangélicos brasileiros.
