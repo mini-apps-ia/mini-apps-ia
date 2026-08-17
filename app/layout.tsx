@@ -10,7 +10,7 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "Mini Apps IA | Devocional e Conteúdo com Inteligência Artificial",
   description:
-    "Devocional diário personalizado e gerador de conteúdo para redes sociais com Inteligência Artificial.",
+    "Devocional diário personalizado no estilo Pr. Jailson Ferreira e gerador de conteúdo para redes sociais com Inteligência Artificial. Assinatura mensal, pague no Mercado Pago.",
 };
 
 export default function RootLayout({

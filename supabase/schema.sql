@@ -41,6 +41,18 @@ create table if not exists public.conteudos (
   created_at timestamptz not null default now()
 );
 
+-- Agendamento diário de devocional por usuário
+create table if not exists public.agendamentos (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  ativo boolean not null default false,
+  horario text not null default '07:00',
+  tema_preferido text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  unique (user_id)
+);
+
 -- Trigger: cria o perfil no primeiro login
 create or replace function public.handle_new_user()
 returns trigger
@@ -66,6 +78,7 @@ alter table public.profiles enable row level security;
 alter table public.subscriptions enable row level security;
 alter table public.devocionais enable row level security;
 alter table public.conteudos enable row level security;
+alter table public.agendamentos enable row level security;
 
 drop policy if exists "profiles_select_own" on public.profiles;
 create policy "profiles_select_own"
@@ -96,5 +109,11 @@ create policy "devocionais_all_own"
 drop policy if exists "conteudos_all_own" on public.conteudos;
 create policy "conteudos_all_own"
   on public.conteudos for all
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
+
+drop policy if exists "agendamentos_all_own" on public.agendamentos;
+create policy "agendamentos_all_own"
+  on public.agendamentos for all
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);

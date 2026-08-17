@@ -5,9 +5,10 @@ export const plans = {
   devocional: {
     price: Number(process.env.PLAN_DEVOCIONAL_PRICE || 19.9),
     label: "Devocional Diário com IA",
-    tagline: "Um devocional novo todos os dias, baseado na sua vida",
+    tagline: "Devocionais novos todos os dias no estilo do Pr. Jailson Ferreira",
     features: [
       "Devocional diário personalizado",
+      "Graça, justificação e identidade em Cristo",
       "Versículo + reflexão + oração",
       "Histórico salvo para rever a qualquer hora",
     ],
